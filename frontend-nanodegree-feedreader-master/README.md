@@ -30,11 +30,13 @@ Checking if the `allFeeds` variable has been defined and if it is not empty.
 Checking if each feed in the `allFeeds` object has a URL defined and that the URL is not empty.
 
 * The passing condition is that the url of each feed has to be defined
+* The passing condition is that the url's length of each feed has to be greater than 0.
 
 #### Third Test
 Test if each feed in the `allFeeds` object has a name defined and that the name is not empty.
 
 * The passing condition is that the name of each feed has to be defined
+* The passing condition is that the name's length of each feed has to be greater than 0.
 
 ## The menu Test Suite
 
@@ -62,6 +64,3 @@ Checking if there is a single `.entry` element within the `.feed` container afte
 Checking if the content of the feed changes after calling `loadFeed` function with another feed id.
 
 * The passing condition is that the comparison between the title and content of the different feeds must be different.
-
-
-When you're all finished, write a `README` file detailing all steps required to successfully run the application. If you have added additional tests, provide documentation for what these future features are and what the tests are checking for.
