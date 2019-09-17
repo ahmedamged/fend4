@@ -33,6 +33,9 @@ $(function() {
              // The passing condition is the url of each feed
              // to be defined
              expect(feed.url).toBeDefined();
+             // The passing condition is the url's length of
+             // each feed to be greater than 0.
+             expect(feed.url.length).toBeGreaterThan(0);
            }
          });
 
@@ -45,6 +48,9 @@ $(function() {
              // The passing condition is the name of each feed
              // to be defined
              expect(feed.name).toBeDefined();
+             // The passing condition is the name's length of
+             // each feed to be greater than 0.
+             expect(feed.name.length).toBeGreaterThan(0);
            }
          });
     });
@@ -65,41 +71,19 @@ $(function() {
           */
           it('menu toggle', function() {
 
-            // event firing function
-            // https://stackoverflow.com/a/2706236
-            function eventFire(el, etype){
-              if (el.fireEvent) {
-                el.fireEvent('on' + etype);
-              } else {
-                let evObj = document.createEvent('Events');
-                evObj.initEvent(etype, true, false);
-                el.dispatchEvent(evObj);
-              }
-            }
-
             // Selecting the menu icon (the hamburger button)
             let menu = document.querySelector('.menu-icon-link');
             // simulate click event
-            eventFire(menu, 'click');
+            menu.click();
             // The passing condition is the body not to have a class
             // named "menu-hidden"
             expect(document.querySelector('body')).not.toHaveClass('menu-hidden');
             // simulate another click event
-            eventFire(menu, 'click');
+            menu.click();
             // The passing condition is the body to have a class
             // named "menu-hidden"
             expect(document.querySelector('body')).toHaveClass('menu-hidden');
 
-            /* Experiment code */
-
-            // let menuToggleSpy = jasmine.createSpy('event');
-            // document.addEventListener('.menu-icon-link', menuToggleSpy);
-            // let menuSpy = spyOn(menu, 'onclick');
-            // menu.trigger('click');
-            // triggerEvent(menu, 'click');
-            // expect('click').toHaveBeenTriggeredOn(menu);
-            // expect(menu).toHaveBeenTriggered();
-            // expect(menuToggleSpy).toHaveBeenCalled();
           });
         });
 
@@ -118,7 +102,7 @@ $(function() {
          */
          it('feed entries has more than a single entry', function() {
            // Selecting all the entries of the first feed
-           let feedItems = document.querySelectorAll('.entry');
+           let feedItems = $('.feed .entry');
            // The passing condition is the feed entries to have
            // a length greater than 0
            expect(feedItems.length).toBeGreaterThan(0);
